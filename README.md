@@ -1,4 +1,4 @@
-# vue-cli-simple
+# vue-cli-template
 Vue 3.0 全家桶开发最佳实践
 
 ## Project setup
