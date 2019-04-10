@@ -1,13 +1,19 @@
 // 以下文件格式是描述路由的协议格式
 // 布局
-import HeaderAsideLayout from './layouts/HeaderAsideLayout'
-import EmptyLayout from './layouts/EmptyLayout'
+const HeaderAsideLayout = () =>
+  import(/* webpackChunkName: "HeaderAsideLayout" */ './layouts/HeaderAsideLayout');
+const EmptyLayout = () =>
+  import(/* webpackChunkName: "EmptyLayout" */ './layouts/EmptyLayout');
+
 // 页面
-import Apple from './views/Apple'
-import Pea from './views/Pea'
-import Beef from './views/Beef'
+const Apple = () => import(/* webpackChunkName: "Apple" */ './views/Apple');
+const Pea = () => import(/* webpackChunkName: "Pea" */ './views/Pea');
+const Beef = () => import(/* webpackChunkName: "Beef" */ './views/Beef');
+
 // 404
-import NotFound from './views/NotFound'
+const NotFound = () =>
+  import(/* webpackChunkName: "NotFound" */ './views/NotFound');
+
 const routeConfig = [
   {
     path: '/',
@@ -54,8 +60,8 @@ const routeConfig = [
   {
     path: '*',
     layout: EmptyLayout,
-    component: NotFound,
+    component: NotFound
   }
-]
+];
 
-export default routeConfig
+export default routeConfig;
