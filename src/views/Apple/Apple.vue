@@ -2,18 +2,18 @@
   <div class="Apple">Apple</div>
 </template>
 <script>
-import { getAppleList } from "../../http/apis/apple";
+import { getAppleList } from '../../http/apis/apple';
 export default {
-  name: "Apple",
+  name: 'Apple',
   methods: {
     async init() {
       let payload = {
         pageSize: 10,
         pageNo: 1,
-        name: "a"
+        name: 'a'
       };
-      let res = await getAppleList(payload);
-      return res;
+      // let res = await getAppleList(payload);
+      // return res;
     }
   },
 
