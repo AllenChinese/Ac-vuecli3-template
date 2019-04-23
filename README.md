@@ -2,7 +2,7 @@
 
 Vue 3.0 全家桶开发最佳实践
 
-### 技术栈方案
+### 1. 技术栈方案
 
 - Vue cli 3
 - Vue
@@ -11,23 +11,23 @@ Vue 3.0 全家桶开发最佳实践
 - Webpack
 - ElementUI
 
-### 兼容性
+### 2. 兼容性
 
 不支持 IE8 及以下版本
 
-### 项目开发
+### 3. 项目开发
 
 #### 开始
 
 1.  `npm i`
 2.  `npm run serve`
-3.  `http://localhost:8080`
+3.  `http://localhost:8081`
 
 #### 调试
 
 `watch` 指令配合 `Charles 代理`
 
-### 菜单配置
+### 4. 菜单配置
 
 ```js
 /**
@@ -50,7 +50,7 @@ const asideMenuConfig = [
 ];
 ```
 
-### API 接口调用
+### 5. API 接口调用
 
 ```js
 import $http from '../config'; // axios 的封装
@@ -66,7 +66,7 @@ export const getAppleList = payload => {
 };
 ```
 
-### 组件分配约定
+### 6. 组件分配约定
 
 #### 通用组件
 
@@ -79,18 +79,27 @@ export const getAppleList = payload => {
 ```js
 Vue.component('my-component-name', {
   /* ... */
-});
+})
 ```
+
+同时，在该目录下的 `index.js` 中作聚合导出，`main.js` 已引入
 
 #### 页面私有组件
 
 - 私有组件放置在 /views/selfpage/components 目录下
 
-### 注释
+### 7. 注释
 
 ```js
 /** this is a single line JSDoc */
 function todo() {}
+```
+
+```js
+function todo() {
+  // this is a inner single line JSDoc
+  const a = 1
+}
 ```
 
 ```js
@@ -101,7 +110,7 @@ function todo() {}
  * @return {number} The x + y value.
  */
 function todo(x = 0, y = 0) {
-  return x + y;
+  return x + y
 }
 ```
 
