@@ -67,14 +67,15 @@ export const getAppleList = payload => {
 ```
 
 ### 6. 组件分配约定
+*所有单文件组件的文件名以大写字母开发
 
 #### 通用组件
 
-- 通用组件放置在 /src/components 目录下
+- 通用组件放置在 /src/components/common 目录下
 
 #### 全局组件
 
-- 全局组件放置在 /src/components 目录下，并使用
+- 全局组件放置在 /src/components/base 目录下，并使用
 
 ```js
 Vue.component('my-component-name', {
