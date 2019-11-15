@@ -24,27 +24,21 @@ export default function $http(opt) {
 
     // request 拦截器
     instance.interceptors.request.use(
-      config => {
+      (config) => {
         // Loading 动画
         // 鉴权
         // request 数据处理
         // 判断请求方式
-        if (
-          config.method.toUpperCase() === 'GET' ||
-          config.method.toUpperCase() === 'PUT'
-        ) {
+        if (config.method.toUpperCase() === 'GET' || config.method.toUpperCase() === 'PUT') {
           config.params = config.payload || ''
         } else if (dataConfig(config.method.toUpperCase())) {
           config.data = config.payload || ''
         }
         return config
       },
-      error => {
+      (error) => {
         //  1.判断请求超时
-        if (
-          error.code === 'ECONNABORTED' &&
-          error.message.indexOf('timeout') !== -1
-        ) {
+        if (error.code === 'ECONNABORTED' && error.message.indexOf('timeout') !== -1) {
           // console.log('根据你设置的timeout/真的请求超时 判断请求现在超时')
           // return service.request(originalRequest);//例如再重复请求一次
         }
@@ -55,7 +49,7 @@ export default function $http(opt) {
 
     // response 拦截器
     instance.interceptors.response.use(
-      response => {
+      (response) => {
         let data
         // 兼容IE9
         if (response.data == undefined) {
@@ -65,7 +59,7 @@ export default function $http(opt) {
         }
         return data
       },
-      error => {
+      (error) => {
         if (error & error.response) {
           // 根据返回的错误状态码处理
           // console.log(error.response.status)
@@ -76,11 +70,11 @@ export default function $http(opt) {
 
     //请求处理
     instance(opt)
-      .then(res => {
+      .then((res) => {
         resolve(res)
         return false
       })
-      .catch(error => {
+      .catch((error) => {
         reject(error)
       })
   })
