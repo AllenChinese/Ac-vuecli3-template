@@ -34,7 +34,7 @@
     "tar": ">=4.4.2",
     "vue-eslint-parser": "^6.0.2",
     "vue-template-compiler": "^2.5.21",
-    "webpack": "^4.29.3"
+    "webpack": "^4.29.6"
   },
   "eslintConfig": {
     "root": true,

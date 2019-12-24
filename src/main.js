@@ -1,11 +1,12 @@
-import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
-import './elementConfig';
-import 'normalize.css/normalize.css';
-import './styles/index.scss';
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import './elementConfig'
+import 'normalize.css/normalize.css'
+import './styles/index.scss'
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
 // 路由拦截
 // router.beforeEach((to, from, next) => {
@@ -14,5 +15,6 @@ Vue.config.productionTip = false;
 
 new Vue({
   router,
-  render: h => h(App)
-}).$mount('#app');
+  store,
+  render: (h) => h(App),
+}).$mount('#app')

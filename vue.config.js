@@ -2,8 +2,8 @@ module.exports = {
   lintOnSave: false,
   configureWebpack: {
     resolve: {
-      extensions: ['.js', '.json', '.vue']
-    }
+      extensions: ['.js', '.json', '.vue'],
+    },
   },
-  publicPath: ''
-};
+  publicPath: '',
+}

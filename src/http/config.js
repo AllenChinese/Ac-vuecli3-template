@@ -7,15 +7,24 @@
  * 4、抽离通用配置项
  * 5、全局 Loading 动画
  */
+
 import axios from 'axios'
-// import qs from 'qs'
+import store from '@/store'
 import defaultOpt from '../config/httpDefaultOpt'
 
 const dataConfig = function(method) {
   return ['POST', 'PATCH'].indexOf(method) > -1
 }
 
-// 方式一 (易扩展)
+let maxDurationTimer = null
+
+const resetLoading = function() {
+  clearTimeout(maxDurationTimer)
+  maxDurationTimer = null
+  // close Loading animation
+  store.dispatch('a_update_publicLoading_status', false)
+}
+
 export default function $http(opt) {
   return new Promise((resolve, reject) => {
     const instance = axios.create(defaultOpt)
@@ -26,6 +35,11 @@ export default function $http(opt) {
     instance.interceptors.request.use(
       (config) => {
         // Loading 动画
+        if (!maxDurationTimer) {
+          maxDurationTimer = setTimeout(() => {
+            store.dispatch('a_update_publicLoading_status', true)
+          }, 500)
+        }
         // 鉴权
         // request 数据处理
         // 判断请求方式
@@ -51,6 +65,7 @@ export default function $http(opt) {
     instance.interceptors.response.use(
       (response) => {
         let data
+        resetLoading()
         // 兼容IE9
         if (response.data == undefined) {
           data = response.request.responseText
@@ -60,6 +75,7 @@ export default function $http(opt) {
         return data
       },
       (error) => {
+        resetLoading()
         if (error & error.response) {
           // 根据返回的错误状态码处理
           // console.log(error.response.status)
