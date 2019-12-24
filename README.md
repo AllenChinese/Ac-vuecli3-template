@@ -33,7 +33,7 @@ Vue 3.0 全家桶开发最佳实践
 /**
  * 菜单配置包含`头部菜单`和`侧边栏菜单`两种用法一致
  */
-const headerMenuConfig = [];
+const headerMenuConfig = []
 
 const asideMenuConfig = [
   {
@@ -43,39 +43,44 @@ const asideMenuConfig = [
     children: [
       {
         path: '/apple',
-        name: '苹果'
-      }
-    ]
-  }
-];
+        name: '苹果',
+      },
+    ],
+  },
+]
 ```
 
 ### 5. API 接口调用
 
 ```js
-import $http from '../config'; // axios 的封装
-import { isMock } from '../../config/env'; // 接口环境判断
+import $http from '../config' // axios 的封装
+import { isMock } from '../../config/env' // 接口环境判断
 
 // 获取所有苹果
-export const getAppleList = payload => {
+export const getAppleList = (payload) => {
   return $http({
     method: 'get',
     url: isMock ? '5a4c871dd1c5401981527d89' : '620002',
-    payload
-  });
-};
+    payload,
+  })
+}
 ```
 
 ### 6. 组件分配约定
-*所有单文件组件的文件名以大写字母开发
+
+\*所有单文件组件的文件名以大写字母开发
 
 #### 通用组件
 
-- 通用组件放置在 /src/components/common 目录下
+- 通用组件放置在 /src/components/Common 目录下，并且在 index.js 中进行聚合导出处理
 
 #### 全局组件
 
-- 全局组件放置在 /src/components/base 目录下，并使用
+- 全局组件放置在 /src/components/Base 目录下，全局组件的命名规则必须以 BaseXXX 开头或者 BaseXXX/index.vue 形式
+
+#### 页面私有组件
+
+- 私有组件放置在 /views/selfpage/components 目录下
 
 ```js
 Vue.component('my-component-name', {
