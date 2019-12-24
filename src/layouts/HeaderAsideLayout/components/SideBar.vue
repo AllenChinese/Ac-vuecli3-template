@@ -1,10 +1,7 @@
 <template>
   <scroll-bar>
     <div class="logo">
-      <img
-        src
-        width="40"
-      >
+      <img src width="40" />
       <span class="site-name">ADMIN</span>
     </div>
     <el-menu
@@ -15,48 +12,22 @@
       active-text-color="#409EFF"
     >
       <template v-for="item in asideMenuConfig">
-        <router-link
-          v-if="!item.children"
-          :to="item.path"
-          :key="item.name"
-        >
+        <router-link v-if="!item.children" :to="item.path" :key="item.name">
           <el-menu-item :index="item.path">
-            <i
-              v-if="item.icon"
-              :class="item.icon"
-            />
-            <span
-              v-if="item.name"
-              slot="title"
-            >{{ item.name }}</span>
+            <i v-if="item.icon" :class="item.icon" />
+            <span v-if="item.name" slot="title">{{ item.name }}</span>
           </el-menu-item>
         </router-link>
 
-        <el-submenu
-          v-else
-          :index="item.name || item.path"
-          :key="item.name"
-        >
+        <el-submenu v-else :index="item.name || item.path" :key="item.name">
           <template slot="title">
-            <i
-              v-if="item && item.icon"
-              :class="item.icon"
-            />
-            <span
-              v-if="item && item.name"
-              slot="title"
-            >{{ item.name }}</span>
+            <i v-if="item && item.icon" :class="item.icon" />
+            <span v-if="item && item.name" slot="title">{{ item.name }}</span>
           </template>
           <template v-for="child in item.children">
-            <router-link
-              :to="item.path + child.path"
-              :key="child.name"
-            >
+            <router-link :to="item.path + child.path" :key="child.name">
               <el-menu-item :index="item.path + child.path">
-                <span
-                  v-if="child && child.name"
-                  slot="title"
-                >{{ child.name }}</span>
+                <span v-if="child && child.name" slot="title">{{ child.name }}</span>
               </el-menu-item>
             </router-link>
           </template>
@@ -67,19 +38,19 @@
 </template>
 
 <script>
-import ScrollBar from "./ScrollBar";
-import { asideMenuConfig } from "../../../menuConfig";
+import ScrollBar from './ScrollBar'
+import { asideMenuConfig } from '../../../menuConfig'
 
 export default {
-  name: "SideBar",
+  name: 'SideBar',
   components: { ScrollBar },
   props: {},
   data() {
     return {
-      asideMenuConfig
-    };
-  }
-};
+      asideMenuConfig,
+    }
+  },
+}
 </script>
 
 <style lang="scss" scoped>

@@ -9,11 +9,10 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-import { AppMain, NavBar, SideBar } from './components'
+import { NavBar, SideBar } from './components'
 export default {
   name: 'Layout',
   components: {
-    AppMain,
     NavBar,
     SideBar,
   },
