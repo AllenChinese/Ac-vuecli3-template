@@ -3,20 +3,25 @@
     <side-bar class="sidebar-container" />
     <div class="main-container">
       <nav-bar />
-      <app-main />
+      <app-main v-loading="publicLoading" />
     </div>
   </div>
 </template>
 <script>
-import { AppMain, NavBar, SideBar } from "./components";
+import { mapState } from 'vuex'
+import { NavBar, SideBar } from './components'
 export default {
-  name: "Layout",
+  name: 'Layout',
   components: {
-    AppMain,
     NavBar,
-    SideBar
-  }
-};
+    SideBar,
+  },
+  computed: {
+    ...mapState({
+      publicLoading: (state) => state.publicLoading,
+    }),
+  },
+}
 </script>
 <style lang="scss" scoped>
 .app-wrapper {
@@ -24,7 +29,7 @@ export default {
   height: 100%;
   width: 100%;
   &:after {
-    content: "";
+    content: '';
     display: table;
     clear: both;
   }

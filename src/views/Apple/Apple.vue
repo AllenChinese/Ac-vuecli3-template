@@ -1,8 +1,8 @@
 <template>
-  <div class="Apple">Apple</div>
+  <div class="Apple">Apple1234</div>
 </template>
 <script>
-import { getAppleList } from '../../http/apis/apple';
+import { getAppleList } from '../../http/apis/apple'
 export default {
   name: 'Apple',
   methods: {
@@ -10,17 +10,17 @@ export default {
       let payload = {
         pageSize: 10,
         pageNo: 1,
-        name: 'a'
-      };
-      // let res = await getAppleList(payload);
-      // return res;
-    }
+        name: 'a',
+      }
+      let res = await getAppleList(payload)
+      return res
+    },
   },
 
   mounted() {
-    this.init();
-  }
-};
+    this.init()
+  },
+}
 </script>
 <style lang="scss" scoped>
 .Apple {
