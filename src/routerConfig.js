@@ -1,67 +1,65 @@
 // 以下文件格式是描述路由的协议格式
 // 布局
 const HeaderAsideLayout = () =>
-  import(/* webpackChunkName: "HeaderAsideLayout" */ './layouts/HeaderAsideLayout');
-const EmptyLayout = () =>
-  import(/* webpackChunkName: "EmptyLayout" */ './layouts/EmptyLayout');
+  import(/* webpackChunkName: "HeaderAsideLayout" */ './layouts/HeaderAsideLayout')
+const EmptyLayout = () => import(/* webpackChunkName: "EmptyLayout" */ './layouts/EmptyLayout')
 
 // 页面
-const Apple = () => import(/* webpackChunkName: "Apple" */ './views/Apple');
-const Pea = () => import(/* webpackChunkName: "Pea" */ './views/Pea');
-const Beef = () => import(/* webpackChunkName: "Beef" */ './views/Beef');
+const Apple = () => import(/* webpackChunkName: "Apple" */ './views/Apple')
+const Pea = () => import(/* webpackChunkName: "Pea" */ './views/Pea')
+const Beef = () => import(/* webpackChunkName: "Beef" */ './views/Beef')
 
 // 404
-const NotFound = () =>
-  import(/* webpackChunkName: "NotFound" */ './views/NotFound');
+const NotFound = () => import(/* webpackChunkName: "NotFound" */ './views/NotFound')
 
 const routeConfig = [
   {
     path: '/',
     layout: HeaderAsideLayout,
     component: Apple,
-    name: 'fruit',
+    redirect: '/fruit/apple',
     children: [
       {
         path: '/fruit/apple',
         layout: HeaderAsideLayout,
         component: Apple,
-        name: 'apple'
-      }
-    ]
+        name: 'apple',
+      },
+    ],
   },
   {
     path: '/vegertable',
     layout: HeaderAsideLayout,
     component: Pea,
-    name: 'vegertable',
+    redirect: '/vegertable/pea',
     children: [
       {
         path: '/vegertable/pea',
         layout: HeaderAsideLayout,
         component: Pea,
-        name: 'pea'
-      }
-    ]
+        name: 'pea',
+      },
+    ],
   },
   {
     path: '/meat',
     layout: HeaderAsideLayout,
     component: Beef,
-    name: 'meat',
+    redirect: '/meat/beef',
     children: [
       {
         path: '/meat/beef',
         layout: HeaderAsideLayout,
         component: Beef,
-        name: 'beef'
-      }
-    ]
+        name: 'beef',
+      },
+    ],
   },
   {
     path: '*',
     layout: EmptyLayout,
-    component: NotFound
-  }
-];
+    component: NotFound,
+  },
+]
 
-export default routeConfig;
+export default routeConfig
