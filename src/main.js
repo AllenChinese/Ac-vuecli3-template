@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
+import routerInit from './router'
 import store from './store'
 import './elementConfig'
 import 'normalize.css/normalize.css'
@@ -9,13 +9,8 @@ import './components/Base/global.js'
 
 Vue.config.productionTip = false
 
-// 路由拦截
-// router.beforeEach((to, from, next) => {
-//   // 登录验证
-// })
-
 new Vue({
-  router,
+  router: routerInit(store),
   store,
   render: (h) => h(App),
 }).$mount('#app')
