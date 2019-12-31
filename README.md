@@ -19,8 +19,8 @@ Vue 3.0 全家桶开发最佳实践
 
 #### 开始
 
-1.  `npm i`
-2.  `npm run serve`
+1.  `npm i` or `yarn install`
+2.  `npm run serve` or `yarn run serve`
 3.  `http://localhost:8081`
 
 #### 调试
